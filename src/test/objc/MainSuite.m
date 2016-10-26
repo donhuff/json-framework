@@ -104,7 +104,7 @@ static NSString *chomp(NSString *str) {
 
     }];
 
-    XCTAssertEqual(count, (NSUInteger)37);
+    XCTAssertEqual(count, (NSUInteger)38);
 
 }
 
