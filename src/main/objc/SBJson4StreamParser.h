@@ -85,6 +85,9 @@ typedef enum {
 /// Called to determine whether to allow multiple whitespace-separated documents
 - (BOOL)parserShouldSupportManyDocuments;
 
+/// Called to perform custom number conversion. For example, to parse to NSDecimalNumber.
+- (NSNumber *)parserConvertToNumber:(NSString *)string;
+
 @end
 
 /**

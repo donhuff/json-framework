@@ -220,7 +220,16 @@
                             // FALL THROUGH
 
                         case sbjson4_token_real: {
-                            [_delegate parserFoundNumber:@(strtod(token, NULL))];
+                            NSNumber *number;
+                            
+                            if ([_delegate respondsToSelector:@selector(parserConvertToNumber:)]) {
+                                NSString *s = [NSString stringWithUTF8String:token];
+                                number = [_delegate parserConvertToNumber:s];
+                            } else {
+                                number = @(strtod(token, NULL));
+                            }
+                            
+                            [_delegate parserFoundNumber:number];
                             [_state parser:self shouldTransitionTo:tok];
                             break;
                         }
