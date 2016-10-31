@@ -223,8 +223,8 @@
                             NSNumber *number;
                             
                             if ([_delegate respondsToSelector:@selector(parserConvertToNumber:)]) {
-                                NSString *s = [NSString stringWithUTF8String:token];
-                                number = [_delegate parserConvertToNumber:s];
+                                NSString *string = [[NSString alloc] initWithBytes:token length:token_len encoding:NSUTF8StringEncoding];
+                                number = [_delegate parserConvertToNumber:string];
                             } else {
                                 number = @(strtod(token, NULL));
                             }
